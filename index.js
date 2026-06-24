@@ -1,6 +1,9 @@
 import express from 'express';
-
+import {notFoundHandler} from './src/middlewares/middlewares.js';
 const app = express();
+
+// Middlewares
+app.use( notFoundHandler );
 
 app.get('/', (req, res) => {
     res.send('Home')
