@@ -1,8 +1,3 @@
-import { Router } from "express";
-import { getAllProducts, searhProducts , getProductById} from "../controllers/products.controllers.js";
-
-const router = Router();
-
 const products = [
   {
     id: 1,
@@ -66,13 +61,48 @@ const products = [
   }
 ];
 
-// Obtener todos los productos o filtrar por category
-router.get('/products', getAllProducts);
+export const getAllProducts = (req, res) => {
 
-// Obtener producto por el nombre
-router.get('/products/search', searhProducts);
+    const { category } = req.query;
 
-// Obtener producto por Id
-router.get('/products/:id', getProductById);
+    if(category){
+      const productsFiltered = products.filter(item => (
+        item.categories.includes(category)
+      ));
 
-export default router;
+      return res.json(productsFiltered);
+    }
+
+    res.json(products);
+
+}
+
+export const searhProducts = (req, res) => {
+  const { name } = req.query;
+
+  if(!name){
+    return res.status(400).json({error: `El nombre es requerido`});
+  }
+
+  const searchedProducts  = products.filter( item => 
+    item.name.toLowerCase().includes(name.toLowerCase()) 
+  );
+
+  if(searchedProducts.length == 0){
+    return res.status(404).json({ error: `No se encontro ningun producto con el nombre ${name}`})
+  }
+
+  res.json(searchedProducts);
+};
+
+export const getProductById = (req, res) => {
+  const { id } = req.params;
+
+  const product = products.find( item => item.id == id );
+
+  if(!product){
+    res.status(400).json({error: `No existe producto con el id ${id}` });
+  }
+
+  res.json(product);
+}
