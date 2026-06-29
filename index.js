@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import {notFoundHandler} from './src/middlewares/error.middlewares.js';
 import productsRouter from './src/routes/products.routes.js';
@@ -10,6 +11,6 @@ app.use('/api/v1', productsRouter);
 // Middlewares
 app.use( notFoundHandler );
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
