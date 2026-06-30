@@ -31,23 +31,24 @@ Se han instalado e integrado las siguientes herramientas clave para garantizar e
 El proyecto sigue un patrón de diseño limpio y modular, dividiendo las responsabilidades de la siguiente manera:
 
 ```text
-├── config/
-│   └── firebase.js          # Configuración y conexión a Firebase
-├── controllers/
-│   ├── auth.controller.js   # Lógica de control para autenticación
-│   └── products.controller.js# Lógica de control para productos
-├── middlewares/
-│   ├── auth.middleware.js   # Validación de JWT y protección de rutas
-│   └── error.middleware.js  # Manejo global de errores y rutas 404
-├── models/
-│   └── products.model.js    # Interacción directa con la colección de Firestore
-├── routes/
-│   ├── auth.routes.js       # Definición de rutas de autenticación
-│   └── products.routes.js   # Definición de rutas de productos
-├── services/
-│   ├── auth.service.js      # Lógica de negocio para autenticación
-│   └── products.service.js  # Lógica de negocio para productos
-├── .env                     # Variables de entorno (Configuración privada)
-├── index.js                 # Punto de entrada de la aplicación
-└── package.json             # Dependencias y scripts
+├── src/
+|   ├── config/
+|   │   └── firebase.js             # Configuración y conexión a Firebase
+|   ├── controllers/
+|   │   ├── auth.controller.js      # Lógica de control para autenticación
+|   │   └── products.controller.js  # Lógica de control para productos
+|   ├── middlewares/
+|   │   ├── auth.middleware.js      # Validación de JWT y protección de rutas
+|   │   └── error.middleware.js     # Manejo global de errores y rutas 404
+|   ├── models/
+|   │   └── products.model.js       # Interacción directa con la colección de Firestore
+|   ├── routes/
+|   │   ├── auth.routes.js          # Definición de rutas de autenticación
+|   │   └── products.routes.js      # Definición de rutas de productos
+|   ├── services/
+|       ├── auth.service.js         # Lógica de negocio para autenticación
+|       └── products.service.js     # Lógica de negocio para productos
+├── .env                            # Variables de entorno (Configuración privada)
+├── index.js                        # Punto de entrada de la aplicación
+└── package.json                    # Dependencias y scripts
 
